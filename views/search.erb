@@ -1,0 +1,19 @@
+<h2 class="content-subhead">Search</h2>
+
+<form action="/search" method="get">
+  <input name="query" value="<%= params[:query] %>">
+  <button type="submit">Search</button>
+</form>
+
+<% if @results %>
+  <h2 class="content-subhead">Results for '<%= params[:query]%>'</h2>
+
+  <ul>
+    <% @results.each do |chapter, index, paragraph, paragraph_index| %>
+    <li>
+      <h4><a href = "/chapters/<%= index + 1 %>#paragraph<%= paragraph_index %>"><%= chapter %></a>:</h4>
+      <p><%= paragraph %></p>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
